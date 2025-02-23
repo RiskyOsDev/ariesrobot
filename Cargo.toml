@@ -5,3 +5,6 @@ edition = "2021"
 
 [dependencies]
 poise = "0.6.1"
+sqlx = { version = "0.8.3", features = ["postgres", "runtime-tokio", "tls-rustls"] }
+
+tokio = { version = "1.43.0", features = ["full"] }

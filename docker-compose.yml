@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - ./db/db-data:/var/lib/postgresql/data
+    networks:
+      - db_net
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: adm@riskyos.dev
+      PGADMIN_DEFAULT_PASSWORD: test
+    ports:
+      - 80:80
+    depends_on:
+      - db
+    volumes:
+      - ./db/pgadmin-data:/var/lib/pgadmin
+    networks:
+      - db_net
+
+networks:
+  db_net:
+    driver: bridge

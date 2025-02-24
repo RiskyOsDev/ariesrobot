@@ -9,6 +9,7 @@ services:
       POSTGRES_PASSWORD: example
     volumes:
       - ./db/db-data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
     networks:
       - db_net
 
